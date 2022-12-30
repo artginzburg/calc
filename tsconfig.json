@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "strict": true,
+    "isolatedModules": true
   }
 }
