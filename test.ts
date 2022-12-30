@@ -20,14 +20,15 @@ const tests = [
   [calc("((3.53*(3.02-4.5))+2.88)*3.307"), -7.7529308],
   [calc("3.53*3.02-4.5+2.88*3.307"), 15.68476],
   [calc("1/2"), 0.5],
-  [calc("1/-2"), -0.5]
+  [calc("1/-2"), -0.5],
+  [calc("1-1"), 0]
 ]
 
 function runTests() {
   console.log("Running " + tests.length + " tests");
   let failCount = 0;
   tests.forEach(function(test) {
-    if (Math.abs((test[0] as number) / (test[1] as number) - 1) > 0.0001) {
+    if (Math.abs((test[0] as number) / (test[1] as number) - 1) > 0.0001 || typeof test[0] !== 'number') {
       console.error("Fail: " + test[0] + " expected: " + test[1]);
       failCount++;
     }

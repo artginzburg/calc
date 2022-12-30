@@ -4,7 +4,7 @@ export interface Operate {
   (op: AutoCompletableString<OperateOperator>, a: number, b: number): number | undefined;
 }
 
-export const operate: Operate = (op, a, b) => {
+export const operateDefault: Operate = (op, a, b) => {
   switch (op) {
     case '+':
       return a + b;
