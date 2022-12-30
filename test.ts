@@ -1,6 +1,6 @@
-var calc = require('./calc');
+import calc from './calc';
 
-var tests = [
+const tests = [
   [calc("-243"), -243],
   [calc("(-243)"), -243],
   [calc("-(243)"), -243],
@@ -25,21 +25,20 @@ var tests = [
 
 function runTests() {
   console.log("Running " + tests.length + " tests");
-  failCount = 0;
+  let failCount = 0;
   tests.forEach(function(test) {
-    if (Math.abs(test[0] / test[1] - 1) > 0.0001) {
+    if (Math.abs((test[0] as number) / (test[1] as number) - 1) > 0.0001) {
       console.error("Fail: " + test[0] + " expected: " + test[1]);
       failCount++;
     }
   });
   console.log(failCount + " tests failed");
+  return failCount;
 }
 
 console.log(tests);
-var failCount = runTests();
+const failCount = runTests();
 
 if (failCount > 0) {
-  return -1;
+  process.exit(-1);
 }
-
-

@@ -1,5 +1,5 @@
 // get the precendence of the given operator
-function prec(str) {
+function prec(str: string) {
   switch (str) {
     case ')':
       return 0;
@@ -17,10 +17,10 @@ function prec(str) {
 }
 
 // pop one operator off the stack and evaluate it
-function popOp(nums, ops) {
-  var op = ops.pop();
-  var a = parseFloat(nums.pop());
-  var b = parseFloat(nums.pop());
+function popOp(nums: (number | string)[], ops: string[]) {
+  const op = ops.pop();
+  const a = parseFloat(String(nums.pop()));
+  const b = parseFloat(String(nums.pop()));
   switch (op) {
     case '+':
       nums.push(a + b);
@@ -42,13 +42,13 @@ function popOp(nums, ops) {
 
 // evaluate str and return numerical result
 // evaluate subexpressions in parenthesis first
-function calc(str) {
-  var newNumF = true;
-  var needOpF = false;
-  var nums = [];
-  var ops = [];
+export default function calc(str: string) {
+  let newNumF = true;
+  let needOpF = false;
+  const nums: (number | string)[] = [];
+  const ops: string[] = [];
 
-  for (var i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i++) {
     switch (str[i]) {
       case '-':
         if (!needOpF) {
@@ -67,7 +67,7 @@ function calc(str) {
             popOp(nums, ops);
           }
           if (str[i] === ')') {
-            var open = ops.pop();
+            const open = ops.pop();
             if (open !== '(') {
               console.log("Error parenthesis: " + open);
             }
@@ -85,12 +85,14 @@ function calc(str) {
       case ' ':
         break;
       default:
+        const character = str[i] as `${number}` | '.';
+
         if (newNumF) {
-          nums.push(str[i]);
+          nums.push(character);
           newNumF = false;
         } else {
-          var num = nums.pop();
-          num = num + str[i];
+          let num = nums.pop()!;
+          num = num + character;
           nums.push(num);
         }
         needOpF = true;
@@ -101,5 +103,3 @@ function calc(str) {
   }
   return nums[0];
 }
-
-module.exports = calc;
