@@ -1,4 +1,4 @@
-// get the precendence of the given operator
+/** get the precedence of the given operator */
 function prec(str: string) {
   switch (str) {
     case ')':
@@ -16,7 +16,7 @@ function prec(str: string) {
   }
 }
 
-// pop one operator off the stack and evaluate it
+/** pop one operator off the stack and evaluate it */
 function popOp(nums: (number | string)[], ops: string[]) {
   const op = ops.pop();
   const a = parseFloat(String(nums.pop()));
@@ -40,8 +40,11 @@ function popOp(nums: (number | string)[], ops: string[]) {
   }
 }
 
-// evaluate str and return numerical result
-// evaluate subexpressions in parenthesis first
+/**
+ * evaluate str and return numerical result
+ *
+ * evaluate sub-expressions in parenthesis first
+ */
 export default function calc(str: string) {
   let newNumF = true;
   let needOpF = false;
