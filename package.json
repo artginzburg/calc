@@ -1,10 +1,16 @@
 {
-  "name": "@motardo/calc",
-  "version": "1.0.3",
+  "name": "@artginzburg/calc",
+  "version": "1.0.4",
   "description": "Evaluate mathematical expressions",
-  "main": "calc.js",
+  "main": "dist/calc",
+  "types": "dist/calc.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "ts-node test"
+    "test": "ts-node test",
+    "build": "tsc",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
