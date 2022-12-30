@@ -1,3 +1,5 @@
+import { operate } from './operate';
+
 /** get the precedence of the given operator */
 function prec(str: string) {
   switch (str) {
@@ -21,22 +23,10 @@ function popOp(nums: (number | string)[], ops: string[]) {
   const op = ops.pop();
   const a = parseFloat(String(nums.pop()));
   const b = parseFloat(String(nums.pop()));
-  switch (op) {
-    case '+':
-      nums.push(a + b);
-      break;
-    case '-':
-      nums.push(b - a);
-      break;
-    case '*':
-      nums.push(a * b);
-      break;
-    case '/':
-      nums.push(b / a);
-      break;
-    case '^':
-      nums.push(Math.pow(b, a));
-      break;
+
+  const operated = operate(op!, a, b);
+  if (operated) {
+    nums.push(operated);
   }
 }
 

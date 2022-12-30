@@ -1,0 +1,22 @@
+export type OperateOperator = '+' | '-' | '*' | '/' | '^';
+
+export interface Operate {
+  (op: AutoCompletableString<OperateOperator>, a: number, b: number): number | undefined;
+}
+
+export const operate: Operate = (op, a, b) => {
+  switch (op) {
+    case '+':
+      return a + b;
+    case '-':
+      return b - a;
+    case '*':
+      return a * b;
+    case '/':
+      return b / a;
+    case '^':
+      return Math.pow(b, a);
+  }
+};
+
+type AutoCompletableString<T> = T | (string & {});
