@@ -7,11 +7,11 @@ export interface Operate {
 export const operateDefault: Operate = (op, a, b) => {
   switch (op) {
     case '+':
-      return a + b;
+      return b + a;
     case '-':
       return b - a;
     case '*':
-      return a * b;
+      return b * a;
     case '/':
       return b / a;
     case '^':
