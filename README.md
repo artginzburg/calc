@@ -37,3 +37,8 @@ calc uses the shunting yard algorithm and two separate stacks, one for numerical
 
 ## Bugs
 Bug reports and contributions are welcome. Open an issue on [github](http://github.com/Motardo/calc/issues/new) or email the author at nswilson@gmail.com
+
+### Possibly related
+
+- https://www.npmjs.com/package/@pie-framework/expression-parser
+- https://www.npmjs.com/package/expression-calculator
