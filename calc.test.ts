@@ -26,4 +26,20 @@ describe('calc', () => {
     expect(calc('1/-2')).toBe(-0.5);
     expect(calc('1-1')).toBe(0);
   });
+
+  test('handles spaces', () => {
+    expect(calc('1 + 8')).toBe(9)
+  })
+
+  test('skips ending parenthesis if it does not have an opening', () => {
+    expect(calc('1 + 8)')).toBe(9)
+  })
+
+  test('returns `undefined` on incorrect syntax', () => {
+    expect(calc('(1 + 8')).toBe(undefined)
+  })
+
+  test.failing('fails on incorrect syntax', () => {
+    expect(calc('12112'))
+  })
 });
